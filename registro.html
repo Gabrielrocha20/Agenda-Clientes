@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Registro</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet"      type="text/css" href="css/registro.css">
+        <link rel="stylesheet"      type="text/css" href="css/navbar.css">
+        <link rel="stylesheet"      type="text/css" href="css/normalize.css">
+        <meta name="viewport"       content="width=device-width, initial-scale=1.0">
+        <meta name="author"         content="@_josephsl">
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/944a9ba2fe.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container_nav">
+                <nav class="navbar">
+                    <ul>
+                        <a href="#"><li class="atualPage">Registrar Cliente</li></a>
+                        <a href="consulta.html"><li>Consultar Agenda</li></a>
+                        <a href="login.html"><li {%if atualCad%}class="atualPage"{%endif%}>Encerrar Sessão</li></a>
+                    </ul>
+                </nav><!--navbar-->
+            </div><!-- container-->
+        </header>
+        <main>
+            <div class="container">
+                <h2 id="title"><span class="title">Registrar</span> Cliente</h2>
+                
+                <div class="wrapper">
+                    <div class="filtro">
+                        <input type="text" id="client" name="client" placeholder="Cliente">
+    
+                        <input type="time" id="time" name="time">
+                        <input type="date" id="date" name="date">
+                        <select name="" id="">
+                            <option value="">Serviço</option>
+                        </select>
+                    </div><!--filtro-->
+                    <div class="filtro filtro2">
+                        <input type="text" id="valor" name="valor" placeholder="Valor">
+                        <input type="text" id="descricao" placeholder="Descrição">
+                        <button id="btn-confirma"><i class="fa-solid fa-check"></i></button>
+                    </div><!--filtro-->
+                </div><!--wrapper-->
+            </div><!--container-->
+        </main>
+    </body>
+</html>

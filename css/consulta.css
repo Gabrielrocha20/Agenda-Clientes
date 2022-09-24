@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body{
+    height: 100%;
+    background-color: #cbbaac;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 900px;
+    position: relative;
+}
+
+
+/* PRINCIPAL */
+#title{
+    margin-top: 60px;
+    color: rgb(225 225 225);
+    font-size: 4em;
+    z-index: 2;
+    position: relative;
+}
+
+.title{
+    width: 200px;
+    height: 90px;
+    padding: 0 10px;
+    background-color: #292a2dee;
+}
+
+/* FILTRO - CONSULTA */
+.wrapper{
+    width: 98%;
+    display: inline-block;
+    text-align: center;
+    transform: translateX(-50%);
+    position: relative;
+    top: 75px;
+    left: 50%;
+}
+
+.filtro input[type=text]{
+    color: #8000ffe5;
+    background-color: rgb(243, 243, 243);
+    width: 180px;
+    height: 35px;
+    border: none;
+    padding: 0 13px;
+    font-size: 18px;
+    outline: none;
+    border-radius: 3px;
+}
+.filtro input[type=text]::placeholder{
+    color: #343335e5;
+}
+
+.filtro button{
+    color: white;
+    width: 50px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn{
+    color: white;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #343335e5;
+}
+
+.btn-verificados{
+    background-color: #34333559;
+}
+
+.btn-pesquisar:hover{
+    background-color: #343335;
+}
+
+.filtro select{
+    height: 35px;
+    padding: 0 25px;
+    border: 1px solid #4e4e4ebd;
+}
+
+input[type=date], input[type=time]{
+    height: 35px;
+    padding: 0 5px;
+    outline: none;
+}
+
+
+/* TABELA */
+table{
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+    border-radius: 10px;
+    color: rgb(225 225 225) !important;
+    background-color: #292a2d;
+}
+
+table tr{position: relative;}
+
+table, th{
+    color: #292a2da6;
+    color: rgb(225 225 225);;
+    font-size: 1.1em;
+    position: relative;
+    padding: 5px 30px;
+    text-align: center;
+    border-collapse: collapse;
+    border-bottom: 1px solid #4e4e4ebd;
+}
+
+table td{
+    padding: 5px 15px;
+    border-bottom: 1px solid #4e4e4ebd;
+}
+
+table th:nth-of-type(1){
+    padding: 0 40px;
+}
+
+table th:nth-of-type(3){
+    padding: 0 40px;
+}
+
+table th:nth-of-type(2), table th:nth-of-type(4), table th:nth-of-type(5){
+    padding: 0 15px;
+}
+
+table .btn-acao{
+    color: #ffffff;
+    line-height: 30px;
+    background-color: #8b8179;
+}
+
+table #acao-confirm:hover, table #acao-excluir:hover{
+    background-color: #525153;
+}
+
+td .btn{
+    margin: 0 2px;
+}
+
+table th:first-of-type::before{
+    content: '';
+    position: absolute;
+    padding: 13px 0;
+    top: 0;
+    left: 0;
+    border: none;
+    border-collapse: collapse;
+}
+
+table th::before{
+    content: '';
+    position: absolute;
+    padding: 50px 0px;
+    top: 7px;
+    left: 0;
+    border: 1px solid #4e4e4ea2;
+    border-collapse: collapse;
+}

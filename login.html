@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Agenda de Clientes</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet"      type="text/css" href="css/login.css">
+        <link rel="stylesheet"      type="text/css" href="css/navbar.css">
+        <link rel="stylesheet"      type="text/css" href="css/normalize.css">
+        <meta name="viewport"       content="width=device-width, initial-scale=1.0">
+        <meta name="author"         content="@_josephsl">
+    </head>
+    <body>
+        <main>            
+            <section>
+                <div class="box login">
+                    <form  action="" method="POST">
+                        <div class="title">
+                            <h2>Faça Log-in</h2>
+                        </div>                         
+                        <div class="alertBox alertBoxLog"></div>
+
+                        <div class="cad-wrapper">
+                            <div class="label-float">
+                                <input id="userLog" type="text" name="userLog" required>
+                                <label id="userLogLabel" for="userLog">Username:</label>
+                            </div><!--label-float-->
+                            <div class="label-float">
+                                <input id="senhaLog" type="password" name="senhaLog" required>
+                                <label id="senhaLogLabel" for="senhaLog">password:</label>
+                                <i id="verSenhaLog" class="fa-solid fa-eye-low-vision"></i>
+                            </div><!--label-float-->
+                        </div><!--cad-wrapper-->
+                        <!--<button onclick="entrar()" class="btn btn-login">Entrar</button>-->
+                        <input type="submit" onclick="entrar()" class="btn btn-login" value="Entrar">
+                    </form>
+                </div><!--log-right-->
+            </section>
+        </main>  
+    </body>
+</html>

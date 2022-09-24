@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body{
+    height: 100%;
+    background-color: #cbbaac;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+
+/* PRINCIPAL*/
+#title{
+    margin-top: 60px;
+    color: rgb(225 225 225);
+    font-size: 4em;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    position: relative;
+    top: 75px;
+    left: 50%;
+}
+
+.title{
+    width: 200px;
+    height: 90px;
+    padding: 0 10px;
+    background-color: #292a2dee;
+}
+
+.filtro{
+    padding: 3px 0;
+}
+
+input{
+    height: 35px;
+}
+
+.filtro input[type=text]{
+    color: #5a5a5a;
+    background-color: rgb(243, 243, 243);
+    width: 170px;
+    border: none;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+    border-radius: 6px;
+}
+
+#valor{
+    width: 80px;
+    text-align: center;
+    float: left;
+}
+
+#descricao{
+    width: 70%;
+    margin: 0 8px;
+    float: left;
+}
+
+#btn-confirma{
+    color: white;
+    height: 35px;
+    width: 50px;
+    margin: 0 3px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #343335;
+}
+
+.filtro select{
+    height: 35px;
+    padding: 0 20px;
+    outline: none;
+    border: 1px solid #4e4e4ebd;
+}
+
+input[type=date], input[type=time]{
+    padding: 0 5px;
+    outline: none;
+}
+
+table{
+    position: relative;
+    top: 115px;
+}
+
+table, th{
+    color: #292a2da6;
+    font-size: 1.1em;
+    position: relative;
+    padding: 5px 20px;
+    border-collapse: collapse;
+    border-bottom: 1px solid #4e4e4ebd;
+}
+
+table th:first-of-type::before{
+    content: '';
+    position: absolute;
+    padding: 13px 0;
+    top: 0;
+    left: 0;
+    border: none;
+    border-collapse: collapse;
+}
+
+table th::before{
+    content: '';
+    position: absolute;
+    padding: 6px 0px;
+    top: 7px;
+    left: 0;
+    border: 1px solid #4e4e4ebd;
+    border-collapse: collapse;
+}

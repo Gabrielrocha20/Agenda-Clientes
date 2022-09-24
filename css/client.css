@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body{
+    height: 100%;
+    background-color: #cbbaac;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+#title{
+    margin-top: 60px;
+    color: rgb(225 225 225);
+    font-size: 4em;
+    z-index: 2;
+    position: relative;
+}
+
+.title-client{
+    margin-left: 7px;
+    color: #292a2dee;
+}
+
+.title{
+    width: 200px;
+    height: 90px;
+    padding: 0 10px;
+    background-color: #292a2dee;
+}
