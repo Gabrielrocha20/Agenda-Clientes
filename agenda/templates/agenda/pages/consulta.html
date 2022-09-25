@@ -29,9 +29,12 @@
                             <input type="time" value="{{time}}"     name="time"     id="">
                             <input type="date" value="{{date}}"     name="date"     id="">
                             <select            value="{{category}}" name="category" id="">
-                                <option        value="">{{category}}</option>
+                                <option        value="{{category_id}}">{{category}}</option>
+                                {% if category != 'Serviço'%}
+                                        <option value="">Serviço</option>
+                                    {% endif %}
                                 {% for categoria in categorias %}
-                                    {% if  categoria.categoria != category %}
+                                    {% if  categoria.id != category_id %}
                                         <option value="{{categoria.id}}">{{categoria.categoria}}</option>
                                     {% endif %}
                                 {% endfor %}
@@ -68,5 +71,5 @@
             </div><!--container-->
         </main>
     </body>
-    <script src="{% static 'script/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </html>

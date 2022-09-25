@@ -1,17 +1,17 @@
-from importlib.metadata import requires
-from pyexpat import model
 import re
+from importlib.metadata import requires
 from urllib import request
-from django.shortcuts import render, redirect
-from django.views import View
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from .models import Agenda, Categoria
 from django.http import Http404
+from django.shortcuts import redirect, render
+from django.views import View
+from pyexpat import model
 
+from .models import Agenda, Categoria
 
 
 # views here.
@@ -90,43 +90,49 @@ class ConsultaView(View):
         category = request.POST.get('category')
         concluido = request.POST.get('verificados')
         pesquisar = request.POST.get('btn-pesquisar')
+        if concluido is None:
+            concluido = pesquisar.split(' ')[1]
+            if concluido == 'on':
+                classe = 'verificados_on'
+            else:
+                classe = 'verificados_off'
+        if not pesquisar is None:
+            if pesquisar.split(' ')[0]  == 'on':
+                conclu = True if concluido == 'on' else False
+                print(category)
+                print(date)
+                print(time)
+                print(conclu)
+                if category == '':
+                    filtrar = Agenda.objects.filter(usuario = request.user, cliente__icontains = client, horario__icontains = time, data__icontains = date, concluido = conclu).order_by('-id')
+                else:
+                    filtrar = Agenda.objects.filter(usuario = request.user, servico__id =category, cliente__icontains = client, horario__icontains = time, data__icontains = date, concluido = conclu).order_by('-id')
+                
+                category = 'Serviço'
 
-        if pesquisar  == 'on':
-
-            concluido = True if concluido == 'on' else False
-
-            filtro = {
-                '0':Agenda.objects.filter(usuario = request.user, categoria__id = category, client__icontains = client, horario__icontains = time, data__icontains = date, concluido = concluido),
-
-                '1':Agenda.objects.filter(usuario = request.user, client__icontains = client, horario__icontains = time, data__icontains = date, concluido = concluido),
-            }
-
-            filtrar = filtro['0'] if not category is None else filtro['1']
-
-            categoria = Categoria.objects.all().order_by('-id')
-            return render(request, 'agenda/pages/consulta.html', context = {
-                'agenda'    :filtrar,
-                'categorias':categoria,
-                'concluido' :concluido,
-                'classe'    :classe,
-                'client'    :client,
-                'time'      :time,
-                'date'      :date,
-                'category'  :category,
-            })
-
-
-
+                categoria = Categoria.objects.all().order_by('-id')
+                return render(request, 'agenda/pages/consulta.html', context = {
+                    'agenda'    :filtrar,
+                    'categorias':categoria,
+                    'concluido' :concluido,
+                    'classe'    :classe,
+                    'client'    :client,
+                    'time'      :time,
+                    'date'      :date,
+                    'category'  :category,
+                })
+            
         if concluido == 'on':
             classe = 'verificados_on'
         else:
             classe = 'verificados_off'
-
-        if category == '':
+        category_id = ''
+        if category != '':
+            category = Categoria.objects.filter(id=category).first()
+            category_id = category.id
+        else:
             category = 'Serviço'
-
-        print(category)
-
+        
         agenda = Agenda.objects.filter(usuario=request.user, concluido=False).order_by('-id')
         categoria = Categoria.objects.all().order_by('-id')
 
@@ -139,6 +145,7 @@ class ConsultaView(View):
             'time'      :time,
             'date'      :date,
             'category'  :category,
+            'category_id': category_id
         })
 
         if category == '':
