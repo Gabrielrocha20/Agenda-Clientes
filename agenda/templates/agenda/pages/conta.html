@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Sua conta</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet"      type="text/css" href="css/conta.css">
+        <link rel="stylesheet"      type="text/css" href="css/navbar.css">
+        <link rel="stylesheet"      type="text/css" href="css/normalize.css">
+        <meta name="viewport"       content="width=device-width, initial-scale=1.0">
+        <meta name="author"         content="@_josephsl">
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/944a9ba2fe.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        {% include 'agenda/partials/header.html' %}
+
+        <main>
+            <div class="container">
+                <h2 id="title"><span class="title">Sua</span><span class="title-conta">Conta</span></h2>
+                
+                <div class="wrapper-tabela">
+                    <div class="tabela">
+                        <table>
+                            <tr>
+                                <td><h3>Username:</h3></td>
+                                <td><p>{%name%}</p></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Senha:</h3></td>
+                                <td><p style="margin-top: 12px;">******</p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button>Alterar Dados</button></td>
+                        </table>
+                    </div><!--tabela-->
+                    <div class="svg">
+                        <img src="svg/account.svg" alt="">
+                    </div><!--svg-->
+                </div><!--wrapper-->
+            </div><!--container-->
+            <section id="alteraDados">
+                <form action="">
+                        <div class="wrap">
+                            <label for="username">Novo Username*</label>
+                            <input type="text" name="username">
+
+                            <label for="password">Nova Senha*</label>
+                            <input type="text" name="password">
+                        </div><!--wrap-->
+                        <button>Salvar</button>
+                    </form>
+            </section>
+        </main>
+    </body>
+</html>

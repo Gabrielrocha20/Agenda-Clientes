@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     outline: none;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 html, body{
@@ -29,10 +32,12 @@ html, body{
     display: inline-block;
     text-align: center;
     margin: 0 auto;
-    transform: translateX(-50%);
     position: relative;
     top: 75px;
     left: 50%;
+    transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
 }
 
 .title{
@@ -44,6 +49,11 @@ html, body{
 
 .filtro{
     padding: 3px 0;
+}
+
+.filtro2{
+    width: 100%;
+    display: inline-block;
 }
 
 input{
@@ -69,19 +79,22 @@ input{
 }
 
 #descricao{
-    width: 70%;
+    width: 65%;
     margin: 0 8px;
     float: left;
 }
 
-#btn-confirma{
-    color: white;
+.btn{
+    color: rgba(255, 255, 255, 0.877);
     height: 35px;
-    width: 50px;
-    margin: 0 3px;
+    width: 40px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    background-color: #343335d2;
+}
+
+.btn:hover{
     background-color: #343335;
 }
 
@@ -129,4 +142,49 @@ table th::before{
     left: 0;
     border: 1px solid #4e4e4ebd;
     border-collapse: collapse;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries */
+@media screen and (max-width: 520px){
+    .wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filtro{
+        border: none;
+        padding: 5px;
+    }
+
+    .filtro2 input{
+        margin-left: 12px;
+    }
+
+    #client{
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+    }
+
+    #btn-confirma{
+        width: 99%;
+        display: block;
+        position: relative;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+    }
 }

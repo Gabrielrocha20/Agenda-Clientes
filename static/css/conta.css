@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+html, body{
+    height: 100%;
+    background-color: #cbbaac;
+    overflow-x: hidden;
+    
+}
+
+.container{
+    height: 100%;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+#title{
+    margin-top: 60px;
+    color: rgb(225 225 225);
+    font-size: 4em;
+    z-index: 2;
+    position: relative;
+}
+
+.title-conta{
+    padding-left: 12px;
+    padding-right: 7px;
+    color: #292a2dee;
+    border: 2px solid #292a2dee;
+}
+
+.title{
+    width: 200px;
+    height: 90px;
+    padding: 0 25px;
+    background-color: #292a2dee;
+}
+
+.wrapper-tabela{
+    height: 100%;
+    display: flex;
+    color: #292a2dee; 
+    max-width: 900px;
+    margin: 80px auto;
+}
+
+.wrapper-tabela h3{
+    color: white;
+    font-size: 2em;
+    display: inline-block;
+    padding: 4px 20px 4px 7px;
+    background-color: #3636367a;
+}
+
+.wrapper-tabela p{
+    color: #363636;
+    font-size: 1.8em;
+    float: left;
+    position: relative;
+    top: 50%;
+    left: 5px;
+}
+
+.tabela{
+    width: 50%;
+    max-width: 50%;
+}
+
+table{ width: 100%;}
+table tr{
+    width: 100%;
+    display: inline-block;
+    padding: 3px 0;
+}
+table td{
+    float: left;
+}
+
+button{
+    color: white;
+    font-size: 2em;
+    padding: 0 62px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    background-color: #363636d7;
+}
+
+button:hover{
+    background-color: #363636;
+}
+
+.svg{
+    width: 50%;
+    position: relative;
+    top: -111px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#alteraDados{
+    display: none;
+    z-index: 99;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 40px black;
+    transform: translate(-50%, -50%);
+    background-color: rgb(54, 54, 54);
+}
+
+#alteraDados label, #alteraDados input{
+    padding: 2px 5px;
+    display: block;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+}
+
+#alteraDados .wrap{
+    position: relative;
+    top: -35px;
+}
+
+#alteraDados label{
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+#alteraDados button{
+    background-color: #1d1d1dc0;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#alteraDados button:hover{
+    background-color: #1d1d1d;
+}

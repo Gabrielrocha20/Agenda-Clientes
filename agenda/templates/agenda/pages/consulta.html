@@ -1,0 +1,72 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Consulta de Agenda</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/consulta.css' %}">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/navbar.css'   %}">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/normalize.css'%}">
+        <meta name="viewport"       content="width=device-width, initial-scale=1.0">
+        <meta name="author"         content="@_josephsl">
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/944a9ba2fe.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        {% include 'agenda/partials/header.html' %}
+
+        <main>
+            <div class="container">
+                <h2 id="title"><span class="title">Consulte</span> a Agenda!</h2>
+                
+                <div class="wrapper">
+                    <div class="filtro">
+                        <form action="{% url 'agenda:consulta' %}" method="POST">{% csrf_token %}                        
+                            <input type="text" value="{{client}}" name="client"   id="client" placeholder="Cliente">
+                            
+                            <input type="time" value="{{time}}"     name="time"     id="">
+                            <input type="date" value="{{date}}"     name="date"     id="">
+                            <select            value="{{category}}" name="category" id="">
+                                <option        value="">{{category}}</option>
+                                {% for categoria in categorias %}
+                                    {% if  categoria.categoria != category %}
+                                        <option value="{{categoria.id}}">{{categoria.categoria}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button onclick="MostrarVerificados()" name="verificados" id="btn-verificados" value="{{concluido}}" class="btn btn-verificados {{classe}}"><i class="fa-solid fa-check"></i></button>
+
+                            <button onclick="Pesquisar()" value="off" name="btn-pesquisar" id="btn-pesquisar" class="btn btn-pesquisar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+                    </div><!--filtro-->
+                    <table> 
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Valor</th>
+                            <th>Serviço</th>
+                            <th>Horário</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                        {% for cliente in agenda  %}
+                            <tr>
+                                <td>{{cliente.cliente}}</td>
+                                <td>{{cliente.valor}}</td>
+                                <td>{{cliente.servico}}</td>
+                                <td>{{cliente.horario}}</td>
+                                <td>{{cliente.data}}</td>
+                                <td>
+                                    <a href="#verificar"><button id="acao-confirm" class="btn btn-acao"><i class="fa-solid fa-check"></i></button></a>
+                                    <a href="#excluir"><button id="acao-excluir" class="btn btn-acao"><i class="fa-solid fa-x"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div><!--wrapper-->
+            </div><!--container-->
+        </main>
+    </body>
+    <script src="{% static 'script/script.js' %}"></script>
+</html>

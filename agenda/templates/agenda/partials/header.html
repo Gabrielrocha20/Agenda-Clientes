@@ -1,0 +1,11 @@
+<header>
+    <div class="container_nav">
+        <nav class="navbar">
+            <ul>
+                <a href="{% url 'agenda:registro' %}"><li>Registrar Cliente</li></a>
+                <a href="{% url 'agenda:consulta' %}"><li>Consultar Agenda</li></a>
+                <a href="#"><li {%if atualCad%}class="atualPage"{%endif%}>Encerrar Sessão</li></a>
+            </ul>
+        </nav><!--navbar-->
+    </div><!-- container-->
+</header>
