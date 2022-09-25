@@ -1,7 +1,3 @@
-import re
-from importlib.metadata import requires
-from urllib import request
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
