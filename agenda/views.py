@@ -1,4 +1,3 @@
-import re
 from importlib.metadata import requires
 from urllib import request
 
@@ -146,6 +145,3 @@ class ConsultaView(View):
             'category'  :category,
             'category_id': category_id
         })
-
-        if category == '':
-            filtro = Agenda.objects.filter(usuario = request.user, categoria__id = category, client__icontains = client, horario__icontains = time, data__icontains = date, concluido = concluido)
