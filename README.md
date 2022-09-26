@@ -9,3 +9,6 @@ Uma agenda de clientes web.
 </p>
 
 ## Registro
+<p>
+  <img src="src_gif/registro.gif">
+</p>
