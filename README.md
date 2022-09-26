@@ -12,3 +12,13 @@ Uma agenda de clientes web.
 <p>
   <img src="src_gif/registro.gif">
 </p>
+
+## Consulta e filtro
+<p>
+  <img src="src_gif/consulta-filtro.gif">
+</p>
+
+## Detalhes - Editar publicação e Conta do usuario
+<p>
+  <img src="src_gif/detalhes- conta.gif">
+</p>
