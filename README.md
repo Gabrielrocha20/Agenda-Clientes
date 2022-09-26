@@ -3,6 +3,9 @@ Uma agenda de clientes web.
 
 # A seguir uma demonstração do site
 
+## Login
 <p>
-  <img src="Agenda-Clientes/src_gif/login.gif">
+  <img src="src_gif/login.gif">
 </p>
+
+## Registro
