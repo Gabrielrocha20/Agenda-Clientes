@@ -47,7 +47,7 @@ class RegistroView(View):
                 'categorias':categoria
             })
         else:
-            return render(request, 'agenda/pages/index.html')
+            return redirect('agenda:login')
 
     def post(self, request):
         client   = request.POST.get('client')
@@ -81,7 +81,7 @@ class ConsultaView(View):
                 'category':'Serviço'
             })
         else:
-            return render(request, 'agenda/pages/index.html')
+            return redirect('agenda:login')
 
     def post(self, request):
         client   = request.POST.get('client')
@@ -143,3 +143,34 @@ class ConsultaView(View):
 
         if category == '':
             filtro = Agenda.objects.filter(usuario = request.user, categoria__id = category, client__icontains = client, horario__icontains = time, data__icontains = date, concluido = concluido)
+
+
+
+class ClienteView(View):
+    def get(self, request, id):
+
+        if request.user.is_authenticated:
+
+            publicacao = Agenda.objects.filter(usuario = request.user, id = id)
+
+            for cliente in publicacao:
+                nome = cliente.cliente
+
+            return render(request, 'agenda/pages/client.html',
+            context = {
+                'publicacao':publicacao,
+                'nome':nome
+            })
+        else:
+            return redirect('agenda:login')
+
+
+
+
+class ContaView(View):
+    def get(self, request):
+
+        if request.user.is_authenticated:
+            return render(request, 'agenda/pages/conta.html')
+        else:
+            return redirect('agenda:login')

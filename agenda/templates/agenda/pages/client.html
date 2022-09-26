@@ -1,11 +1,12 @@
+{% load static %}
 <!doctype html>
 <html lang="pt-br">
     <head>
         <title>Consulta de Agenda</title>
         <meta charset="utf-8">
-        <link rel="stylesheet"      type="text/css" href="css/client.css">
-        <link rel="stylesheet"      type="text/css" href="css/navbar.css">
-        <link rel="stylesheet"      type="text/css" href="css/normalize.css">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/client.css'    %}">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/navbar.css'    %}">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/normalize.css' %}">
         <meta name="viewport"       content="width=device-width, initial-scale=1.0">
         <meta name="author"         content="@_josephsl">
         <!-- fontawesome -->
@@ -17,32 +18,32 @@
 
         <main>
             <div class="container">
-                <h2 id="title"><span class="title">Cliente</span><span class="title-client">{%Jãozin%}</span></h2>
+                <h2 id="title"><span class="title">Cliente</span><span class="title-client">Jãozin</span></h2>
                 
                 <div class="wrapper">
                     <div class="tabela">
                         <table>
                             <tr>
                                 <td><h3>Serviço:</h3></td>
-                                <td><p>{%name%}</p></td>
+                                <td><p>name</p></td>
                             </tr>
                             <tr>
                                 <td><h3>Valor:</h3></td>
-                                <td><p>{%name%}</p></td>
+                                <td><p>name</p></td>
                             </tr>
                             <tr>
                                 <td><h3>Horário:</h3></td>
-                                <td><p>{%name%}</p></td>
+                                <td><p>name</p></td>
                             </tr>
                             <tr>
                                 <td><h3>Data:</h3></td>
-                                <td><p>{%name%}</p></td>
+                                <td><p>name</p></td>
                             </tr>
                             <tr class="coment">
                                 <td colspan="2"><h3>Comentário:</h3></td>
                             </tr>
                             <tr class="coment">
-                                <td colspan="2"><p>{%Comentário...%}</p></td>
+                                <td colspan="2"><p>Comentário...</p></td>
                             </tr>
                         </table>
                     </div><!--tabela-->
