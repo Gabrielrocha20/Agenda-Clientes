@@ -21,7 +21,7 @@ MostrarVerificados = () => {
 
 Pesquisar = () => {
     if(botaoPesquisar.value == 'off'){
-        botaoPesquisar.value = 'on'
+        botaoPesquisar.value = `on ${verificados.value}`
     } else {
         botaoPesquisar.value = 'off'
     }
