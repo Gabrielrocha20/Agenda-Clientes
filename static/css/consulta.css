@@ -45,6 +45,7 @@ html, body{
     position: relative;
     top: 75px;
     left: 50%;
+    padding-bottom: 80px;
 }
 
 .filtro input[type=text]{
@@ -79,25 +80,22 @@ html, body{
     background-color: #343335d2;
 }
 
-.btn-pesquisar:hover{
+.btn-pesquisar{
+    background-color: #292a2d;
+}
+
+.btn-pesquisar:active{
     background-color: #343335;
 }
 
 .btn-verificados{
     background-color: #34333559;
+    background-color: rgba(27, 160, 0, 0.507);
 }
-
-.btn-verificados:focus{
-    /** DEMONSTRAÇÃO (EXCLUIR) **/
-    background-color: #343335e5;
-}
-
-/* .btn-pesquisar:active{
-    background-color: #343335;
-} */
 
 .verificados_on{
     background-color: #292a2d;
+    background-color: rgba(19, 160, 0, 0.836);
 }
 
 .filtro select{

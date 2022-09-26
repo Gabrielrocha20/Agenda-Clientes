@@ -25,8 +25,8 @@ section{
     top: calc(50% - 2%);
     left: 50%;
     width: 95%;
-    max-width: 380px;
-    height: 490px;  
+    max-width: 340px;
+    height: 440px;  
     border: 2px solid rgb(139 114 88);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.815);
     transform: translate(-50%, -50%);

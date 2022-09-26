@@ -83,19 +83,34 @@ table td{
     float: left;
 }
 
-button{
+.botoes button{
     color: white;
-    font-size: 2em;
-    padding: 0 62px;
+    font-size: 1em;
+    width: 250px;
     height: 45px;
     border: none;
     cursor: pointer;
-    background-color: #363636d7;
+    margin-top: 10px;
+    background-color: #363636f3;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.767);
+}
+
+.botoes{
+    margin-top: 20px;
+}
+
+.botoes .encerrarSessao{
+    background-color: rgba(160, 0, 0, 0.76);
+}
+
+.botoes .encerrarSessao:hover{
+    background-color: rgba(160, 0, 0, 0.836);
 }
 
 button:hover{
-    background-color: #363636;
+    background-color: #313131;
 }
+
 
 .svg{
     width: 50%;
@@ -108,12 +123,19 @@ button:hover{
 
 
 
-
-
-
-
+#background{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(32, 32, 32, 0.753);
+}
 
 #alteraDados{
+    z-index: 100;
     display: none;
     z-index: 99;
     color: white;
@@ -131,8 +153,8 @@ button:hover{
 }
 
 #alteraDados label, #alteraDados input{
-    padding: 2px 5px;
     display: block;
+    padding: 2px 5px;
     border: none;
     border-radius: 2px;
     text-align: center;
@@ -140,7 +162,15 @@ button:hover{
 
 #alteraDados .wrap{
     position: relative;
-    top: -35px;
+    top: 20px;
+    text-align: center;
+}
+
+#alteraDados .wrap span{
+    color: rgba(255, 255, 255, 0.589);
+    position: absolute;
+    top: -50px;
+    left: -20px;
 }
 
 #alteraDados label{
@@ -148,14 +178,33 @@ button:hover{
     margin-bottom: 5px;
 }
 
+#alteraDados input{
+    margin: 0 auto;
+}
+
+.botoesAlteraDados{
+    display: flex;
+}
+
 #alteraDados button{
-    background-color: #1d1d1dc0;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 150px;
+    height: 45px;
+    margin-top: 4px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin: 0 10px;
+    margin-top: 70px;
+    background-color: #333333c0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.767);
 }
 
 #alteraDados button:hover{
-    background-color: #1d1d1d;
+    background-color: #2c2c2c;
+}
+
+
+#alteraDados button:nth-of-type(2){
+    bottom: 10px;
 }

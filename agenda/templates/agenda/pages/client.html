@@ -2,13 +2,14 @@
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Consulta de Agenda</title>
+        <title>Consulta: {{nome}}</title>
         <meta charset="utf-8">
         <link rel="stylesheet"      type="text/css" href="{% static 'css/client.css'    %}">
         <link rel="stylesheet"      type="text/css" href="{% static 'css/navbar.css'    %}">
         <link rel="stylesheet"      type="text/css" href="{% static 'css/normalize.css' %}">
         <meta name="viewport"       content="width=device-width, initial-scale=1.0">
         <meta name="author"         content="@_josephsl">
+        <link rel="icon" type="/" width="25" href="{% static '/img/icon.png' %}"/>
         <!-- fontawesome -->
         <script src="https://kit.fontawesome.com/944a9ba2fe.js" crossorigin="anonymous"></script>
     </head>
@@ -18,33 +19,39 @@
 
         <main>
             <div class="container">
-                <h2 id="title"><span class="title">Cliente</span><span class="title-client">Jãozin</span></h2>
+                <h2 id="title"><span class="title">Cliente</span><span class="title-client">{{nome}}</span></h2>
                 
                 <div class="wrapper">
                     <div class="tabela">
                         <table>
-                            <tr>
-                                <td><h3>Serviço:</h3></td>
-                                <td><p>name</p></td>
-                            </tr>
-                            <tr>
-                                <td><h3>Valor:</h3></td>
-                                <td><p>name</p></td>
-                            </tr>
-                            <tr>
-                                <td><h3>Horário:</h3></td>
-                                <td><p>name</p></td>
-                            </tr>
-                            <tr>
-                                <td><h3>Data:</h3></td>
-                                <td><p>name</p></td>
-                            </tr>
-                            <tr class="coment">
-                                <td colspan="2"><h3>Comentário:</h3></td>
-                            </tr>
-                            <tr class="coment">
-                                <td colspan="2"><p>Comentário...</p></td>
-                            </tr>
+                            {% for cliente in publicacao %}
+                                <tr>
+                                    <td><h3>Serviço:</h3></td>
+                                    <td><p>{{cliente.servico}}</p></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3>Valor:</h3>
+                                    </td>
+                                    <td>
+                                        <p><span style="padding: 0 3px 0 2px; color: #363636ec;">R$</span>{{cliente.valor}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Horário:</h3></td>
+                                    <td><p>{{cliente.horario}}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Data:</h3></td>
+                                    <td><p>{{cliente.data}}</p></td>
+                                </tr>
+                                <tr class="coment">
+                                    <td colspan="2"><h3>Comentário:</h3></td>
+                                </tr>
+                                <tr class="coment">
+                                    <td colspan="2"><p>{{cliente.descricao}}</p></td>
+                                </tr>
+                            {% endfor %}
                         </table>
                     </div><!--tabela-->
                     <div class="svg">

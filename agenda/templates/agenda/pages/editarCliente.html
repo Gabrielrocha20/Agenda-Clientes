@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Editando: {{nome}}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/registro.css' %}">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/navbar.css'   %}">
+        <link rel="stylesheet"      type="text/css" href="{% static 'css/normalize.css'%}">
+        <meta name="viewport"       content="width=device-width, initial-scale=1.0">
+        <meta name="author"         content="@_josephsl">
+        <link rel="icon" type="/" width="25" href="{% static '/img/icon.png' %}"/>
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/944a9ba2fe.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        {% include 'agenda/partials/header.html' %}
+
+        <main>
+            <div class="container">
+                <h2 id="title"><span class="title">Editar</span> {{nome}}</h2>
+                
+                <div class="wrapper">
+                    {% for cliente in publicacao %}
+                        <form action="{% url 'agenda:editarCliente' cliente.id %}" method="POST">{% csrf_token %}
+                            <div class="filtro">
+                                <input type="text"      value="{{cliente.cliente}}" id="client" name="client" placeholder="{{cliente.cliente}}">
+            
+                                <input type="time"      value="{{cliente.horario}}" id="time" name="time">
+                                <input type="date"      value="{{cliente.data}}" id="date" name="date">
+                                <select name="category" id="">
+                                    <option value="{{cliente.servico}}">{{cliente.servico}}</option>
+
+                                    {% for categoria in categorias %}
+                                        {%  if cliente.servico !=  categoria.categoria %}
+                                            <option value="{{categoria.categoria}}">{{categoria.categoria}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div><!--filtro-->
+                            <div class="filtro filtro2">
+                                <input type="text" value="{{cliente.valor}}" name="valor" id="valor" placeholder="{{cliente.valor}}" style="text-align: left;">
+
+                                <input type="text" value="{{cliente.descricao}}" name="description" id="descricao" placeholder="{{cliente.descricao}}">
+                                <input type="checkbox" value="{{cliente.concluido}}" name='concluido' class="btn" {% if cliente.concluido %}checked{% endif %}>
+                                <button id="btn-confirma" class="btn" style="position: relative; top: -12px;">
+                                    <i class="fa-solid fa-check"></i>
+                                </button>
+                            </div><!--filtro-->
+                        </form>
+                    {% endfor %}
+                </div><!--wrapper-->
+            </div><!--container-->
+        </main>
+    </body>
+</html>

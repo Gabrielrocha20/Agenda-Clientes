@@ -10,6 +10,7 @@
         <link rel="stylesheet"      type="text/css" href="{% static 'css/normalize.css'%}">
         <meta name="viewport"       content="width=device-width, initial-scale=1.0">
         <meta name="author"         content="@_josephsl">
+        <link rel="icon" type="/" width="25" href="{% static '/img/icon.png' %}"/>
         <!-- fontawesome -->
         <script src="https://kit.fontawesome.com/944a9ba2fe.js" crossorigin="anonymous"></script>
     </head>
@@ -54,17 +55,17 @@
                             <th>Ações</th>
                         </tr>
                         {% for cliente in agenda  %}
-                            <tr>
-                                <td><a href="">{{cliente.cliente}}</a></td>
-                                <td>{{cliente.valor}}</td>
-                                <td>{{cliente.servico}}</td>
-                                <td>{{cliente.horario}}</td>
-                                <td>{{cliente.data}}</td>
-                                <td>
-                                    <a href="#verificar"><button id="acao-confirm" class="btn btn-acao"><i class="fa-solid fa-check"></i></button></a>
-                                    <a href="#excluir"><button id="acao-excluir" class="btn btn-acao"><i class="fa-solid fa-x"></i></button></a>
-                                </td>
-                            </tr>
+                                <tr>                                   
+                                    <td><a href="{% url 'agenda:cliente' cliente.id %}">{{cliente.cliente}} </a></td>
+                                    <td><a href="{% url 'agenda:cliente' cliente.id %}">{{cliente.valor}}   </a></td>
+                                    <td><a href="{% url 'agenda:cliente' cliente.id %}">{{cliente.servico}} </a></td>
+                                    <td><a href="{% url 'agenda:cliente' cliente.id %}">{{cliente.horario}} </a></td>
+                                    <td><a href="{% url 'agenda:cliente' cliente.id %}">{{cliente.data}}    </a></td>
+                                    <td>
+                                        <a href="{% url 'agenda:editarCliente' cliente.id %}"><button id="acao-confirm" class="btn btn-acao"><i style="font-size: 15px;" class="fa-solid fa-pen"></i></button></a>
+                                        <a href="#excluir"><button id="acao-excluir" class="btn btn-acao"><i class="fa-solid fa-x"></i></button></a>
+                                    </td>
+                                </tr>
                         {% endfor %}
                     </table>
                 </div><!--wrapper-->

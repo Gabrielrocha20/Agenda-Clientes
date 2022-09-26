@@ -1,3 +1,4 @@
+from http import client
 import re
 from importlib.metadata import requires
 from urllib import request
@@ -16,6 +17,10 @@ from .models import Agenda, Categoria
 # views here.
 class LoginView(View):
     def get(self, request):
+
+        if request.user.is_authenticated:
+            return redirect('agenda:conta', request.user.id)
+
         return render(request, 'agenda/pages/index.html')
 
     def post(self, request):
@@ -43,13 +48,14 @@ class RegistroView(View):
         if request.user.is_authenticated:
             return render(request, 'agenda/pages/registro.html', context = {
                 'agenda':agenda,
-                'categorias':categoria
+                'categorias':categoria,
+                'atualRegistro':True,
             })
         else:
             return redirect('agenda:login')
 
     def post(self, request):
-        client   = request.POST.get('client')
+        client   = request.POST.get('client').capitalize()
         time     = request.POST.get('time')
         date     = request.POST.get('date')
         category = request.POST.get('category')
@@ -77,7 +83,8 @@ class ConsultaView(View):
             return render(request, 'agenda/pages/consulta.html', context = {
                 'agenda':agenda,
                 'categorias':categoria,
-                'category':'Serviço'
+                'category':'Serviço',
+                'atualConsulta':True,
             })
         else:
             return redirect('agenda:login')
@@ -119,6 +126,7 @@ class ConsultaView(View):
                     'time'      :time,
                     'date'      :date,
                     'category'  :category,
+                    'atualConsulta':True,
                 })
             
         if concluido == 'on':
@@ -144,7 +152,8 @@ class ConsultaView(View):
             'time'      :time,
             'date'      :date,
             'category'  :category,
-            'category_id': category_id
+            'category_id': category_id,
+            'atualConsulta':True,
         })
 
         if category == '':
@@ -165,7 +174,7 @@ class ClienteView(View):
             return render(request, 'agenda/pages/client.html',
             context = {
                 'publicacao':publicacao,
-                'nome':nome
+                'nome':nome,
             })
         else:
             return redirect('agenda:login')
@@ -174,9 +183,91 @@ class ClienteView(View):
 
 
 class ContaView(View):
-    def get(self, request):
+    def get(self, request, id):
 
         if request.user.is_authenticated:
-            return render(request, 'agenda/pages/conta.html')
+            publicacao = User.objects.filter(username = request.user, id = id)
+            for user in publicacao:
+                nome = user.username
+
+            return render(request, 'agenda/pages/conta.html',
+                context = {
+                    'atualConta':True,
+                    'nome':nome
+                })
         else:
             return redirect('agenda:login')
+
+    def post(self, request, id):
+
+        sair    = request.POST.get('sair')
+        salvar    = request.POST.get('salvar')
+
+        if sair == 'on':
+            return redirect('agenda:conta', id)
+
+        print(sair, salvar)
+
+        usuario = request.POST.get('username')
+        senha   = request.POST.get('password')
+        perfil  = User.objects.filter(username = request.user, id = id)
+
+        for user in perfil:
+                user.username = usuario
+                user.set_password(senha)
+                user.save()
+
+        relog = authenticate(request, username = usuario, password = senha)
+        login(request, user = relog)
+
+        return redirect('agenda:conta', id)
+            
+
+class LogoutView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            logout(request)
+
+        return redirect('agenda:login')
+
+
+class EditarClienteView(View):
+    def get(self, request, id):
+        if request.user.is_authenticated:
+            publicacao = Agenda.objects.filter(usuario = request.user, id = id)
+            categorias = Categoria.objects.all()
+            nome = publicacao[0].cliente
+            return render(request, 'agenda/pages/editarCliente.html', context = {
+                'publicacao':publicacao,
+                'categorias':categorias,
+                'nome':nome,
+            })
+        else:
+            return redirect('agenda:login')
+
+    def post(self, request, id):
+        data      = request.POST.get('date')
+        hora      = request.POST.get('time')
+        categoria = request.POST.get('category')
+        nome      = request.POST.get('client')
+        valor     = request.POST.get('valor')
+        descricao = request.POST.get('description')
+        concluido = request.POST.get('concluido')
+        print(concluido)
+        concluido = False if concluido == None else True
+
+        publicacao = Agenda.objects.filter(usuario=request.user, id=id)
+        categorias = Categoria.objects.all().order_by('-id')
+
+        print(data)
+        for cliente in publicacao:
+            cliente.cliente   = nome
+            cliente.categoria = Categoria.objects.get(categoria=categoria)
+            cliente.valor     = valor
+            cliente.date      = data
+            cliente.horario   = hora
+            cliente.descricao = descricao
+            cliente.concluido = concluido
+            cliente.save()
+        
+        return redirect('agenda:editarCliente', id)

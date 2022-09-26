@@ -41,6 +41,7 @@ html, body{
 }
 
 .wrapper{
+    position: relative;
     height: 100%;
     display: flex;
     color: #292a2dee; 
@@ -57,11 +58,14 @@ html, body{
 }
 
 .wrapper p{
-    color: #363636;
-    font-size: 1.8em;
+    color: #363636ab;
+    font-size: 1.5em;
     float: left;
-    position: relative;
+    position: absolute;
     top: 50%;
+    padding-left: 5px;
+    font-weight: bold;
+    transform: translateY(-50%);
 }
 
 .tabela{
@@ -74,21 +78,23 @@ table tr{
     width: 100%;
     display: inline-block;
     padding: 3px 0;
+    position: relative;
 }
 table td{
     float: left;
 }
 
 .coment h3{
+    padding: none !important;
     text-align: center;
-    width: 100%;
+    width: calc(100% - 15px);
 }
 
 .coment p{
     text-align: left;
     font-size: 1.8em;
     display: inline-block;
-    margin-top: 10px;
+    margin-top:10px;
     z-index: 99;
 }
 
