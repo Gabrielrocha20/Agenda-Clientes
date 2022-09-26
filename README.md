@@ -4,5 +4,5 @@ Uma agenda de clientes web.
 # A seguir uma demonstração do site
 
 <p>
-  <img src="src_gif/login.git">
+  <img src="Agenda-Clientes/src_gif/login.gif">
 </p>
