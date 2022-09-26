@@ -1,8 +1,3 @@
-from http import client
-import re
-from importlib.metadata import requires
-from urllib import request
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -286,10 +281,13 @@ class EditarClienteView(View):
         
         return redirect('agenda:editarCliente', id)
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> e01558be9b5875daf2ace8acaee06304da0b5556
 class ExcluirClienteView(View):
     def get(self, request, id):
         if request.user.is_authenticated:
@@ -297,4 +295,8 @@ class ExcluirClienteView(View):
             publicacao.delete()
             return redirect('agenda:consulta')
         else:
+<<<<<<< HEAD
             return redirect('agenda:login')
+=======
+            return redirect('agenda:login')
+>>>>>>> e01558be9b5875daf2ace8acaee06304da0b5556
