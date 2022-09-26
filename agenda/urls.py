@@ -1,5 +1,7 @@
 from django.urls import path
+
 from . import views
+
 app_name = 'agenda'
 
 urlpatterns = [
@@ -10,4 +12,5 @@ urlpatterns = [
     path('conta/<int:id>', views.ContaView.as_view(), name='conta'),
     path('logout', views.LogoutView.as_view(), name='logout'),
     path('editarCliente/<int:id>', views.EditarClienteView.as_view(), name='editarCliente'),
+    path('excluirCliente/<int:id>', views.ExcluirClienteView.as_view(), name='excluirCliente'),
 ]

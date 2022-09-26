@@ -1,5 +1,5 @@
-from http import client
 import re
+from http import client
 from importlib.metadata import requires
 from urllib import request
 
@@ -271,3 +271,12 @@ class EditarClienteView(View):
             cliente.save()
         
         return redirect('agenda:editarCliente', id)
+
+class ExcluirClienteView(View):
+    def get(self, request, id):
+        if request.user.is_authenticated:
+            publicacao = Agenda.objects.filter(usuario = request.user, id = id)
+            publicacao.delete()
+            return redirect('agenda:consulta')
+        else:
+            return redirect('agenda:login')
