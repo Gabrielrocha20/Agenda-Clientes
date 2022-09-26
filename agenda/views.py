@@ -55,20 +55,34 @@ class RegistroView(View):
             return redirect('agenda:login')
 
     def post(self, request):
-        client   = request.POST.get('client').capitalize()
         time     = request.POST.get('time')
         date     = request.POST.get('date')
         category = request.POST.get('category')
         description = request.POST.get('description')
         valor    = request.POST.get('valor')
+        registraFiltro = request.POST.get('btn-confirma')
 
-        if (len(client) == 0) or (len(time) == 0) or (len(date) == 0) or (len(category) == 0) or (len(description) == 0) or (len(valor) == 0):
-            raise Http404('deu ruim!')
+        print(registraFiltro)
 
-        novoCadastro = Agenda.objects.create(usuario = request.user, cliente = client, horario = time, data = date, descricao = description, concluido = False, servico = Categoria.objects.get(categoria = category), valor = valor)
+        if registraFiltro == 'on':
+            client   = request.POST.get('client').capitalize()
+            
+            if (len(client) == 0) or (len(time) == 0) or (len(date) == 0) or (len(category) == 0) or (len(description) == 0) or (len(valor) == 0):
+                raise Http404('deu ruim!')
 
-        novoCadastro.save()
+            novoCadastro = Agenda.objects.create(usuario = request.user, cliente = client, horario = time, data = date, descricao = description, concluido = False, servico = Categoria.objects.get(categoria = category), valor = valor)
+
+            novoCadastro.save()
+            
+            return redirect('agenda:registro')
         
+        categoria =  request.POST.get('novaCategoria')
+
+        if  not categoria is None:
+            novaCategoria = Categoria.objects.create(categoria = categoria)
+            novaCategoria.save()
+            print(categoria)
+            
         return redirect('agenda:registro')
 
 
@@ -271,3 +285,16 @@ class EditarClienteView(View):
             cliente.save()
         
         return redirect('agenda:editarCliente', id)
+
+
+
+
+
+class ExcluirClienteView(View):
+    def get(self, request, id):
+        if request.user.is_authenticated:
+            publicacao = Agenda.objects.filter(usuario = request.user, id = id)
+            publicacao.delete()
+            return redirect('agenda:consulta')
+        else:
+            return redirect('agenda:login')

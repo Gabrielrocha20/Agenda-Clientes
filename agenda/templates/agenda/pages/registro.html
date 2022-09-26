@@ -18,7 +18,7 @@
         {% include 'agenda/partials/header.html' %}
 
         <main>
-            <div class="container">
+            <div id="container" class="container">
                 <h2 id="title"><span class="title">Registrar</span> Cliente</h2>
                 
                 <div class="wrapper">
@@ -39,12 +39,34 @@
                         <div class="filtro filtro2">
                             <input type="text" name="valor"      id="valor"     placeholder="Valor">
                             <input type="text" name="description" id="descricao" placeholder="Descrição">
-                            <button id="btn-confirma" class="btn"><i class="fa-solid fa-check"></i></button>
-                            <button class="btn btn-editar-categoria"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="btnConfirma()" name="btn-confirma" id="btn-confirma" value="off" class="btn"><i class="fa-solid fa-check"></i></button>
                         </div><!--filtro-->
                     </form>
+                    <button onclick="RegistraFiltro()" value="off" id="btnRegistraFiltro" name="registraFiltro" class="btn btn-editar-categoria">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
                 </div><!--wrapper-->
             </div><!--container-->
+
+
+            <div id="background">               
+                <section id="registraFiltro">
+                    <form action="{% url 'agenda:registro' %}" method="POST">{% csrf_token %}
+                        <div class="wrap">                            
+                            <span>*Registrar Nova Categoria:</span>
+                            <label for="novaCategoria">Nova categoria*</label>
+                            <input type="text" name="novaCategoria">
+                        </div><!--wrap-->
+                        <div class="botoesAlteraDados">
+                            <button name="sair"   value="off" id="btn_sair" onclick="BotaoSair()">Sair</button>
+                            <button name="salvar" value="salvar">Salvar</button>
+                        </div><!--botoesAlteraDados-->
+                    </form>
+                </section>
+            </div><!--background-->
+
+
         </main>
+        <script src="{% static 'js/script.js' %}"></script>
     </body>
 </html>

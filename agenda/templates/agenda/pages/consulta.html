@@ -63,7 +63,7 @@
                                     <td><a href="{% url 'agenda:cliente' cliente.id %}">{{cliente.data}}    </a></td>
                                     <td>
                                         <a href="{% url 'agenda:editarCliente' cliente.id %}"><button id="acao-confirm" class="btn btn-acao"><i style="font-size: 15px;" class="fa-solid fa-pen"></i></button></a>
-                                        <a href="#excluir"><button id="acao-excluir" class="btn btn-acao"><i class="fa-solid fa-x"></i></button></a>
+                                        <a href="{% url 'agenda:excluirCliente' cliente.id %}"><button id="acao-excluir" class="btn btn-acao"><i class="fa-solid fa-x"></i></button></a>
                                     </td>
                                 </tr>
                         {% endfor %}
