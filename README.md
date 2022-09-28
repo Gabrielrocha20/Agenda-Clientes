@@ -22,3 +22,8 @@ Uma agenda de clientes web.
 <p>
   <img src="src_gif/detalhes- conta.gif">
 </p>
+
+## Editar perfil e criar nova categoria
+<p>
+  <img src="src_gif/conta.gif">
+</p>
